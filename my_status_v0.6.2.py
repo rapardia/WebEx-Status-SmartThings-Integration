@@ -4,8 +4,8 @@ import asyncio
 import pysmartthings
 import json
 import time
-#import credentials for all calls:
-from creds import access_token
+#import credentials for WebEx and SmartThings
+from webex_creds import access_token
 from st_creds import token
 from refresh import data
 
@@ -74,7 +74,7 @@ async def light_off():
         else:
             pass
 
-#WebEx
+#Get WebEx status
 async def get_status():
     global response
     global json_response
@@ -104,7 +104,7 @@ async def get_status():
         token_refresh()
  
     
-#Refresh WebEx Token if Expired
+#Refresh WebEx Token if Expired (recieved 400 or 401 error)
 def token_refresh():
     token_response = requests.post('https://webexapis.com/v1/access_token', data=data)
     response_data = json.loads(token_response.text)
@@ -113,7 +113,8 @@ def token_refresh():
     token.write('access_token = ' + "'" + access_token + "'")
     token.close()
     print ("Token Refreshed")
-    
+
+#Run main corutine and loop every 5 seconds
 while True:
     loop = asyncio.get_event_loop()
     loop.run_until_complete(get_status())
