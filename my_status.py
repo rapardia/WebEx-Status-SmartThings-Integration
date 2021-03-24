@@ -4,6 +4,7 @@ import asyncio
 import pysmartthings
 import json
 import time
+import get_devices_v2
 #import credentials for WebEx and SmartThings
 from webex_creds import access_token
 from st_creds import token
@@ -12,12 +13,27 @@ from refresh import data
 
 #SmartThings
 
-# Turn Light Red
+#Choose which device you want to be change.
+async def choose_device():
+    async with aiohttp.ClientSession() as session:
+        global choice
+        index = 0
+        api = pysmartthings.SmartThings(session, token)
+        devices = await api.devices()
+        for device in devices:
+            print("{}: {}:".format(index, device.label))
+            index += 1
+        choice = input('Enter the Number of the Device You would like to control: ')
+        choice = int(choice)
+        device = devices[choice]
+
+
+#Turn Light Red
 async def light_red():
     async with aiohttp.ClientSession() as session:
         api = pysmartthings.SmartThings(session, token)
         devices = await api.devices()
-        device = devices[2]     
+        device = devices[choice]     
         await device.status.refresh()
         light_status = (device.status.values)
         if (light_status['switch'] == 'off'):
@@ -33,7 +49,7 @@ async def light_orange():
     async with aiohttp.ClientSession() as session:
         api = pysmartthings.SmartThings(session, token)
         devices = await api.devices()
-        device = devices[2]  
+        device = devices[choice]  
         await device.status.refresh()
         light_status = (device.status.values)
         if (light_status['switch'] == 'off'):
@@ -44,12 +60,12 @@ async def light_orange():
         else:
             pass
 
-# Turn Light Green
+#Turn Light Green
 async def light_green():
     async with aiohttp.ClientSession() as session:
         api = pysmartthings.SmartThings(session, token)
         devices = await api.devices()
-        device = devices[2]     
+        device = devices[choice]     
         await device.status.refresh()
         light_status = (device.status.values)
         if (light_status['switch'] == 'off'):
@@ -65,7 +81,7 @@ async def light_off():
     async with aiohttp.ClientSession() as session:
         api = pysmartthings.SmartThings(session, token)
         devices = await api.devices()
-        device = devices[2]
+        device = devices[choice]
         await device.status.refresh()
         status = (device.status.values ['switch'])
         if (status != 'off'):
@@ -76,6 +92,8 @@ async def light_off():
 
 #Get WebEx status
 async def get_status():
+    global response
+    global json_response
     #Identify the WebEx API Call and Params
     apiUrl = 'https://webexapis.com/v1/people/me'
     httpHeaders = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + access_token }
@@ -112,8 +130,12 @@ def token_refresh():
     token.close()
     print ("Token Refreshed")
 
-#Run main corutine and loop every 5 seconds
-while True:
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(get_status())
-    time.sleep(5)
+#Main coroutine - ask for device first, then get WebEx Status every 5 seconds
+async def main():
+    await choose_device()
+    while True:
+        await get_status()
+        time.sleep(5)
+
+loop = asyncio.get_event_loop()
+loop.run_until_complete(main())
