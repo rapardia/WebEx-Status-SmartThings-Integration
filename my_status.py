@@ -97,7 +97,6 @@ async def get_status():
     apiUrl = 'https://webexapis.com/v1/people/me'
     httpHeaders = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + access_token }
     quaryParams = { 'callingData': 'false' }
-    #GET current WebEx Status
     response = requests.get( url = apiUrl, headers = httpHeaders, params = quaryParams )
     json_response = response.json()
     print( response.status_code )
