@@ -76,8 +76,6 @@ async def light_off():
 
 #Get WebEx status
 async def get_status():
-    global response
-    global json_response
     #Identify the WebEx API Call and Params
     apiUrl = 'https://webexapis.com/v1/people/me'
     httpHeaders = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + access_token }
