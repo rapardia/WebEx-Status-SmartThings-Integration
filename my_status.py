@@ -4,7 +4,6 @@ import asyncio
 import pysmartthings
 import json
 import time
-import get_devices_v2
 #import credentials for WebEx and SmartThings
 from webex_creds import access_token
 from st_creds import token
