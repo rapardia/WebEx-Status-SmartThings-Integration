@@ -9,9 +9,10 @@ The script pulls your current WebEx Status using the /people/me API call every 5
 - If presenting, red
 - and if inactive, it turns the light off.
 
-I have this working with my SmartThings connected Sylvania LED strip. The goal is to put it around my office door frame to let my family know when I'm in a meeting.<br>
+I have this working with my SmartThings connected Sylvania LED strip. The goal is to put it around my office door frame to let my family know when I'm in a meeting.
 
-## Instructions
+# Instructions:
+## For my_status.py:
 The webex_creds.py file will hold your WebEx token. Insert your Token between the single quotes.
 The st_creds.py file will hold your SmartThings Token between the single quotes
 The refresh.py file will hold your WebEx refresh token and required info to refresh your token when it expires - this will NOT work if you are using your personal access token, which expires after 12 hours.
@@ -25,10 +26,12 @@ When we first run "my_status.py" it will list your SmartThings devices in a numb
             3:Kitchen Lights
             Enter the Number of the Device You would like to control:
 
-Once you enter the number of the device you want to use, it will start monitoring your WeEx status.
+Once you enter the number of the device you want to use, it will start monitoring your WebEx status.
 
 ### WebEx Token Refresh
 If you're using a Personal Access Token, which expires in 12 hours, you can comment out or remove the def token_refresh() function.
 
-
+## For my_status_interactive.py:
+This version is more user-friendly removes the need for the credential files. The credentials are added manually at the launch of the program before device selection.
+This version also removes the WebEx refresh function
 
