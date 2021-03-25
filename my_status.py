@@ -12,7 +12,7 @@ from refresh import data
 
 #SmartThings
 
-#Choose which device you want to be change.
+#Choose which device you want to change.
 async def choose_device():
     async with aiohttp.ClientSession() as session:
         global choice
@@ -117,7 +117,7 @@ async def get_status():
         token_refresh()
  
     
-#Refresh WebEx Token if Expired (recieved 400 or 401 error)
+#Refresh WebEx Token if Expired (received 400 or 401 error)
 def token_refresh():
     token_response = requests.post('https://webexapis.com/v1/access_token', data=data)
     response_data = json.loads(token_response.text)
