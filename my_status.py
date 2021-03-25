@@ -101,18 +101,17 @@ async def get_status():
     json_response = response.json()
     print( response.status_code )
     if (response.status_code == 200):
+        print('Status:' + json_response['status'])
         if (json_response['status'] == 'active'):
-            print('Status:' + json_response ['status'])
             await light_green()
         elif (json_response['status'] == 'presenting'):
-            print('Status:' + json_response['status'])
             await light_red()
-        elif (json_response['status'] == 'call', 'meeting'):
-            print('Status:' + json_response['status'])
+        elif (json_response['status'] == ['call', 'meeting']):           
             await light_orange()
         elif (json_response['status'] == 'inactive'):
-            print('Status:' + json_response['status'])
             await light_off()
+        else:
+            pass
         
     elif (response.status_code == 400 or 401):
         token_refresh()
