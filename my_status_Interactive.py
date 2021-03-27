@@ -107,7 +107,7 @@ async def get_status():
         elif (json_response['status'] == 'presenting'):
             print('Status:' + json_response['status'])
             await light_red()
-        elif (json_response['status'] == 'call' or 'meeting'):
+        elif (json_response['status'] == ['call' or 'meeting']):
             print('Status:' + json_response['status'])
             await light_orange()
         elif (json_response['status'] == 'inactive'):
