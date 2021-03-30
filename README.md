@@ -15,10 +15,14 @@ I have this working with my SmartThings connected Sylvania LED strip. The goal i
 
 # Instructions:
 ## For my_status.py:
-The webex_creds.py file will hold your WebEx token. 
+The webex_creds.py file will hold your WebEx token.
+
 The st_creds.py file will hold your SmartThings Token.
+
 The refresh.py file will hold your WebEx refresh token and required info to refresh your token when it expires - this will NOT work if you are using your personal access token, which expires after 12 hours.
+
 For the above files: Open the file in a text editor and Insert your Token between the single quotes like below:
+
 ![webex_creds](https://user-images.githubusercontent.com/32777886/113059252-15986c80-9164-11eb-8f04-2e45cc75f6e5.PNG)
 
 
