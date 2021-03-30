@@ -1,3 +1,5 @@
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/rapardia/WebEx-Status-SmartThings-Integration)
+
 # WebEx-Status-SmartThings-Integration
 
 This code uses the pysmarthings library to integrate with the SmartThings API.
@@ -34,5 +36,5 @@ If you're using an integration access token and not a Personal access token, you
 
 
 ## For my_status_interactive.py:
-This version is more user-friendly removes the need for the credential files. The credentials are added manually at the launch of the program before device selection.
-
+This version is more user-friendly and removes the need for the credential files. The credentials are added manually at the launch of the program before device selection.
+Downside of this version is having to manually enter your WebEx Personal access token and SmartThings Token every launch.
