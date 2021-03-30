@@ -117,6 +117,7 @@ async def get_status():
     
 # #Refresh WebEx Token if Expired (received 400 or 401 error)
 # def token_refresh():
+    # global access_token
     # token_response = requests.post('https://webexapis.com/v1/access_token', data=data)
     # response_data = json.loads(token_response.text)
     # access_token = response_data['access_token']
