@@ -91,8 +91,6 @@ async def light_off():
 
 #Get WebEx status
 async def get_status():
-    global response
-    global json_response
     #Identify the WebEx API Call and Params
     apiUrl = 'https://webexapis.com/v1/people/me'
     httpHeaders = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + access_token }
@@ -122,7 +120,7 @@ async def get_status():
     # token_response = requests.post('https://webexapis.com/v1/access_token', data=data)
     # response_data = json.loads(token_response.text)
     # access_token = response_data['access_token']
-    # token = open('creds.py', 'w')
+    # token = open('webex_creds.py', 'w')
     # token.write('access_token = ' + "'" + access_token + "'")
     # token.close()
     # print ("Token Refreshed")
