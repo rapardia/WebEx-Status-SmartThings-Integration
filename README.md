@@ -1,3 +1,5 @@
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/rapardia/WebEx-Status-SmartThings-Integration)
+
 # WebEx-Status-SmartThings-Integration
 
 This code uses the pysmarthings library to integrate with the SmartThings API.
