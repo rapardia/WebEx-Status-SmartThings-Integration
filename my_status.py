@@ -113,19 +113,19 @@ async def get_status():
         else:
             pass
         
-    elif (response.status_code == 400 or 401):
-        token_refresh()
+    # elif (response.status_code == 400 or 401):
+        # token_refresh()
  
     
-#Refresh WebEx Token if Expired (received 400 or 401 error)
-def token_refresh():
-    token_response = requests.post('https://webexapis.com/v1/access_token', data=data)
-    response_data = json.loads(token_response.text)
-    access_token = response_data['access_token']
-    token = open('creds.py', 'w')
-    token.write('access_token = ' + "'" + access_token + "'")
-    token.close()
-    print ("Token Refreshed")
+# #Refresh WebEx Token if Expired (received 400 or 401 error)
+# def token_refresh():
+    # token_response = requests.post('https://webexapis.com/v1/access_token', data=data)
+    # response_data = json.loads(token_response.text)
+    # access_token = response_data['access_token']
+    # token = open('creds.py', 'w')
+    # token.write('access_token = ' + "'" + access_token + "'")
+    # token.close()
+    # print ("Token Refreshed")
 
 #Main coroutine - ask for device first, then get WebEx Status every 5 seconds
 async def main():
