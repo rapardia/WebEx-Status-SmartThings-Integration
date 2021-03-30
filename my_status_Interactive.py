@@ -113,7 +113,10 @@ async def get_status():
             await light_off()
         else:
             pass
+<<<<<<< HEAD
         
+=======
+>>>>>>> 6274ffa17832fec73f7a4475247faa88f858857f
         
 
 #Main coroutine - ask for device first, then get WebEx Status every 5 seconds
