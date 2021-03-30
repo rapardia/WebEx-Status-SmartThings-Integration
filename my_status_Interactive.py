@@ -99,20 +99,21 @@ async def get_status():
     #GET current WebEx Status
     response = requests.get( url = apiUrl, headers = httpHeaders, params = quaryParams )
     json_response = response.json()
+    status = json_response['status']
     print( response.status_code )
     if (response.status_code == 200):
-        if (json_response['status'] == 'active'):
-            print('Status:' + json_response ['status'])
+        print('Status:' + status)
+        if (status == 'active'):
             await light_green()
-        elif (json_response['status'] == 'presenting'):
-            print('Status:' + json_response['status'])
+        elif (status == 'presenting' or status == 'DoNotDisturb'):
             await light_red()
-        elif (json_response['status'] == ['call' or 'meeting']):
-            print('Status:' + json_response['status'])
+        elif (status == 'call' or status == 'meeting'):           
             await light_orange()
-        elif (json_response['status'] == 'inactive'):
-            print('Status:' + json_response['status'])
+        elif (status == 'inactive'):
             await light_off()
+        else:
+            pass
+        
         
 
 #Main coroutine - ask for device first, then get WebEx Status every 5 seconds

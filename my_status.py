@@ -97,19 +97,21 @@ async def get_status():
     quaryParams = { 'callingData': 'false' }
     response = requests.get( url = apiUrl, headers = httpHeaders, params = quaryParams )
     json_response = response.json()
+    status = json_response['status']
     print( response.status_code )
     if (response.status_code == 200):
-        print('Status:' + json_response['status'])
-        if (json_response['status'] == 'active'):
+        print('Status:' + status)
+        if (status == 'active'):
             await light_green()
-        elif (json_response['status'] == 'presenting'):
+        elif (status == 'presenting' or status == 'DoNotDisturb'):
             await light_red()
-        elif (json_response['status'] == ['call' or 'meeting']):           
+        elif (status == 'call' or status == 'meeting'):           
             await light_orange()
-        elif (json_response['status'] == 'inactive'):
+        elif (status == 'inactive'):
             await light_off()
         else:
             pass
+        
         
     # elif (response.status_code == 400 or 401):
         # token_refresh()
