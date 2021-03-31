@@ -35,7 +35,7 @@ Once you enter the number of the device you want to use, it will start monitorin
 
 
 ### WebEx Token Refresh
-If you're using an integration access token and not a Personal access token, you can un-comment the "token_refresh" module (lines 114-126) and add your refresh data (refresh key, client id and client refresh) to the data.py file as below:
+If you're using an integration access token and not a Personal access token, you can un-comment the "token_refresh" module (~lines 116-129) and add your refresh data (refresh key, client id and client refresh) to the data.py file as below:
 ![image](https://user-images.githubusercontent.com/32777886/113059745-a8d1a200-9164-11eb-858f-6a47d6f28399.png)
 
 
